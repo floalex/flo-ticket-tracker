@@ -1,0 +1,40 @@
+body {
+  margin: 33px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+select {
+  width: auto;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+th.number,
+td.number {
+  text-align: center;
+}
+
+.comment {
+  margin-bottom: 2em;
+}
+
+.reset {
+  font-size: .8rem;
+}
+
+.empty-list {
+  font-style: italic;
+}
