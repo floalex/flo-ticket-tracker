@@ -1,19 +1,41 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:update, :destroy]
+  before_action :set_tag, only: [:edit, :update, :destroy]
+  
+  def index
+    @tags = Tag.all
+  end
+  
+  def new
+    @tag = Tag.new
+  end
   
   def create
     @tag = Tag.new(tag_params)
     
-    # if @tag.save
-    # else
-    # end
+    if @tag.save
+      redirect_to tags_path
+      flash[:success] = "Tag was successfully created."
+    else
+      render :new
+    end
+  end
+  
+  def edit
   end
   
   def update
-    
+    if @tag.update(tag_params)
+      redirect_to tags_path
+      flash[:success] = "Tag was successfully updated.."
+    else
+      render :edit
+    end
   end
   
   def destroy
+    @tag.destroy
+    redirect_to tags_path
+    flash[:success] = "Tag was successfully deleted."
   end
   
   private

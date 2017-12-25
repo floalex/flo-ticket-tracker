@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   
   resources :tickets
   
-  resources :tags, only: [:create, :update, :destroy]
+  resources :tags, only: [:index, :new, :edit, :create, :update, :destroy]
 end

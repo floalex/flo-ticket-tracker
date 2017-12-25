@@ -6,6 +6,7 @@
       <th>Body</th>
       <th>Status</th>
       <th>Open</th>
+      <th>Tags</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= ticket.body %></td>
         <td><%= ticket.status %></td>
         <td><%= ticket.open %></td>
+        <td><%= tag_list(ticket) %></td>
         <td class="shrink">
           <%= link_to 'Edit', edit_ticket_path(ticket) %>
           <%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,0 +1,12 @@
+<%= render 'shared/errors', obj: @tag %>
+
+<div class='row'>
+  <div class="col-sm-10">
+    <%= bootstrap_form_for @tag do |f| %>
+      <%= f.text_field :name %>
+      <%= f.form_group do %>
+        <%= f.submit 'Submit', class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
