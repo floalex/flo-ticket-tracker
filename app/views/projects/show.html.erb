@@ -8,5 +8,13 @@
   <%= @project.description %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<p>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
+</p>
+
+<br>
+
+<h2>Tickets</h2>
+
+<%= render "tickets/list", tickets: @project.tickets %>
