@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @ticket %>
+
+<div class='row'>
+  <div class="col-sm-10">
+    <%= bootstrap_form_for @ticket do |f| %>
+      <%= f.collection_select :project_id, Project.all, :id, :name %>
+      <%= f.text_field :name %>
+      <%= f.text_area :body %>
+      <%= f.select :status, options_for_ticket_status %>
+      <%= f.check_box :open %>
+      <%= f.form_group do %>
+        <%= f.submit 'Submit', class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

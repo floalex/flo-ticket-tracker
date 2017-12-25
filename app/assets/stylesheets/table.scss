@@ -1,3 +1,12 @@
+table {
+  border-bottom: 1px solid #dddddd;
+  margin: 10px;
+}
+tbody tr th, tbody tr td, thead tr th, thead tr td {
+  text-align: center;
+  width: 300px;
+}
+
 .shrink {
   width: 230px;
 }
