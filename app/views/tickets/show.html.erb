@@ -24,8 +24,13 @@
 </p>
 
 <p>
-  <strong>Creator:</strong>
+  <strong>Created By:</strong>
   <%= @ticket.creator.name %>
+</p>
+
+<p>
+  <strong>Assigned To:</strong>
+  <%= @ticket.assignee ? @ticket.assignee.name : "No one" %>
 </p>
 
 <br>
