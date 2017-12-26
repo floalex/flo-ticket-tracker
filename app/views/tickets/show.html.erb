@@ -23,6 +23,11 @@
   <%= tag_list(@ticket) %>
 </p>
 
+<p>
+  <strong>Creator:</strong>
+  <%= @ticket.creator.name %>
+</p>
+
 <br>
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
