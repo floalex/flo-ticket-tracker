@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "Thank you for for registering! You can sign in now."
-      redirect_to root_path
+      redirect_to sign_in_path
     else
       render :new
     end

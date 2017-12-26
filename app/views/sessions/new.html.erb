@@ -1,0 +1,13 @@
+<%= render 'shared/content_title', title: 'Sign In' %>
+
+<div class='row'>
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= bootstrap_form_tag(url: sign_in_path) do |f| %>
+      <%= f.email_field :email, label: "Email Address" %>
+      <%= f.password_field :password %>
+      <%= f.form_group do %>
+        <%= f.submit 'Sign In', class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
