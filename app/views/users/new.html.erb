@@ -1,0 +1,17 @@
+<%= render 'shared/content_title', title: 'Sign Up' %>
+
+<%= render 'shared/errors', obj: @user %>
+
+<div class='row'>
+  <div class="col-sm-10">
+    <%= bootstrap_form_for(@user, layout: :horizontal, control_col: "col-sm-6", label_col: "col-sm-4") do |f| %>
+      <%= f.text_field :name, label: "Name" %>
+      <%= f.email_field :email, label: "Email Address" %>
+      <%= f.password_field :password %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.form_group do %>
+        <%= f.submit 'Submit', class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
