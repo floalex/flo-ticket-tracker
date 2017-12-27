@@ -51,6 +51,5 @@ class TicketsController < ApplicationController
   def ticket_params
     params.require(:ticket)
           .permit(:name, :body, :status, :open, :project_id, :assignee_id, tag_ids: [])
-          .merge(creator: current_user)
   end
 end

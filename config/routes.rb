@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   
   resources :projects
   
-  resources :tickets
+  resources :tickets do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
   
   resources :tags, only: [:index, :new, :edit, :create, :update, :destroy]
   

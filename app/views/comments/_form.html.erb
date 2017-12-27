@@ -1,0 +1,11 @@
+<div class='row'>
+  <div class="col-sm-10">
+    <%= bootstrap_form_for [@ticket, comment] do |f| %>
+      <%= render 'shared/errors', obj: comment %>
+      <%= f.text_area :body, label: "Add a comment" %>
+      <%= f.form_group do %>
+        <%= f.submit(comment.new_record? ? 'Create comment' : 'Update comment', class: "btn btn-success") %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

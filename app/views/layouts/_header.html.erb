@@ -25,8 +25,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
-         <li><p>Sign in as <%= current_user.name %></p></li>
-         <li><p> | </p></li>
+         <li><p>Sign in as <%= current_user.name %> |</p></li>
          <li><%= link_to "Sign Out", '/sign_out' %></li>
         <% else %>
           <li><%= link_to 'Sign In', sign_in_path %></li> 

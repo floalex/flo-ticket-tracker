@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Boostrap modal used for comment#edit
+  - https://coderwall.com/p/ej0mhg/open-a-rails-form-with-twitter-bootstrap-modals
+  - Need to take out the class "hide" in tickets/show div id="modal-window" in order to show the modal

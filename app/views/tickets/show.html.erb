@@ -37,3 +37,27 @@
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
+
+<div class="comment">
+  <h2>Comment<h2>
+  
+  <% if @ticket.comments.any? %>
+    <% @ticket.reload.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+      <p><em>posted by <%= comment.creator.name %> <%= time_ago_in_words(comment.created_at) %> ago</em></p>
+      <% if signed_in? && current_user == comment.creator %>
+        <p>
+          <%= link_to "Edit", edit_ticket_comment_path(@ticket, comment), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %>
+          <%= link_to 'Delete', ticket_comment_path(@ticket, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>There are no comments yet.</p>
+  <% end %>
+  
+  <%= render "comments/form", comment: Comment.new %>
+</div>
+
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
