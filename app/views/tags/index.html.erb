@@ -13,7 +13,7 @@
    <% @tags.each do |tag| %>
     <tr>
       <td><%= tag.name %></td>
-      <td><%= tag.tickets.size %></td>
+      <td><%= link_to tag.tickets.size, tickets_path(tag_id: tag.id) %></td>
       <td class="shrink">
         <%= link_to 'Edit', edit_tag_path(tag) %>
         or 

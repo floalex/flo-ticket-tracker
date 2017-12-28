@@ -11,6 +11,9 @@ class TicketsController < ApplicationController
     if params[:status].present?
       @tickets = @tickets.where(status: params[:status])
     end
+    if params[:tag_id].present?
+      @tickets = @tickets.joins(:tags).where("tags.id" => params[:tag_id])
+    end
   end
   
   def show

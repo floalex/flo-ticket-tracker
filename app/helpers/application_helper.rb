@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def options_for_ticket_status(selected=nil)
-    options_for_select(Ticket::STATUSES.map {|status| [status, status]}, selected) # ['status', status] <option value="status">status</option>
+    options_for_select(Ticket::STATUSES.map {|status| [status.titleize, status]}, selected) # ['status', status] <option value="status">status</option>
   end
  
   # user time_ago_in_words in Rails 
