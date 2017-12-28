@@ -16,19 +16,29 @@ class CommentsController < ApplicationController
     @comment.creator = current_user
     
     if @comment.save
+      if params[:ticket_status].present?
+        @ticket.update_attributes!(status: params[:ticket_status])
+      end
+      
       flash[:success] = 'Comment was added.'
       redirect_to @ticket
     else
-      render "ticket/show"
+      flash[:danger] = 'Comment can not be blank.'
+      redirect_to @ticket
     end
   end
   
   def update
     if @comment.update(comment_params)
+      if params[:ticket_status].present?
+        @ticket.update_attributes!(status: params[:ticket_status])
+      end
+      
       flash[:success] = 'Comment was updated.'
       redirect_to @ticket
     else
-      render :edit
+      flash[:danger] = 'Comment can not be blank.'
+      redirect_to @ticket
     end
   end
   

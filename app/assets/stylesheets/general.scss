@@ -48,13 +48,30 @@ textarea {
   min-height: 10rem;
 }
 
+.errors-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  border-radius: 3px;
+  color: #a94442;
+  margin: 20px 15px;
+  
+  h5 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+  }
+  
+  ul {
+    list-style: square inside;
+    li {
+      padding: 5px;
+    }
+  }
+}
+
 th.number,
 td.number {
   text-align: center;
-}
-
-.comment {
-  margin-bottom: 2em;
 }
 
 .reset {

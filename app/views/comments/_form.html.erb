@@ -1,10 +1,15 @@
 <div class='row'>
-  <div class="col-sm-10">
-    <%= bootstrap_form_for [@ticket, comment] do |f| %>
-      <%= render 'shared/errors', obj: comment %>
-      <%= f.text_area :body, label: "Add a comment" %>
+  <div class="col-sm-11">
+    <%= bootstrap_form_for [@ticket, @comment] do |f| %>
+      <%= f.text_area :body, label: (@comment.new_record? ? "Add a comment" : "Edit your comment") %>
+      <div class="form-group">
+        <%= label_tag :ticket_status, "Update ticket status" %>
+        <%= select_tag :ticket_status, options_for_ticket_status, include_blank: "Do not change", class: "form-control" %>
+      </div>
       <%= f.form_group do %>
-        <%= f.submit(comment.new_record? ? 'Create comment' : 'Update comment', class: "btn btn-success") %>
+        <%= f.submit(@comment.new_record? ? 'Create comment' : 'Update comment', class: "btn btn-primary") %>
+        or
+        <%= link_to "Cancel", ticket_path(@ticket) %>
       <% end %>
     <% end %>
   </div>
