@@ -8,9 +8,8 @@
       <%= f.text_area :body %>
       <%= f.select :status, options_for_ticket_status %>
       <%= f.collection_select :assignee_id, User.all, :id, :name, include_blank: "No one" %>
-      <%= f.check_box :open %>
-      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, label: "Tags" do |cb| %>
-        <% cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } %>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, inline: true, label: "Tags: " do |cb| %>
+        <% cb.label { cb.check_box + cb.text } %>
       <% end %>
       <%= f.form_group do %>
         <%= f.submit 'Submit', class: "btn btn-success" %>

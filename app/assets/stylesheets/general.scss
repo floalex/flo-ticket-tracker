@@ -5,16 +5,31 @@ body {
 h1 {
   font-size: 20px;
   font-weight: bold;
+  line-height: 1.2;
+  margin: 0 0 0.75em;
 }
 
 h2 {
   font-size: 18px;
   font-weight: bold;
+  line-height: 1.2;
+  margin: 0 0 0.75em;
+}
+
+.container > p {
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0 0 0.75em;
 }
 
 .navbar-nav > li > p {
   padding-top: 15px;
   padding-bottom: 15px;
+  margin: 0 auto;
+}
+
+.strong {
+  font-weight: bold;
 }
 
 .left {
@@ -26,6 +41,7 @@ h2 {
 
 select {
   width: auto;
+  margin-bottom: 0.75em;
 }
 
 textarea {
@@ -47,4 +63,14 @@ td.number {
 
 .empty-list {
   font-style: italic;
+}
+
+.ticket-filters {
+  select {
+   display: inline;
+  }
+  button {
+   padding: .4em .7em;
+   font-size: 12px;
+  }
 }

@@ -1,11 +1,9 @@
 <table>
   <thead>
     <tr>
-      <th scope="row">Project</th>
       <th>Name</th>
-      <th>Body</th>
+      <th>Assignee</th>
       <th>Status</th>
-      <th>Open</th>
       <th>Tags</th>
       <th colspan="2"></th>
     </tr>
@@ -14,11 +12,9 @@
   <tbody>
     <% tickets.each do |ticket| %>
       <tr>
-        <td><%= ticket.project.name %></td>
         <td><%= link_to ticket.name, ticket %></td>
-        <td><%= ticket.body %></td>
-        <td><%= ticket.status %></td>
-        <td><%= ticket.open %></td>
+        <td><%= ticket.assignee.try(:name) %></td>  <!--@ticket.assignee.name ? @ticket.assignee.name.name : nil-->
+        <td><%= ticket.status.titleize %></td>
         <td><%= tag_list(ticket) %></td>
         <td class="shrink">
           <%= link_to 'Edit', edit_ticket_path(ticket) %>

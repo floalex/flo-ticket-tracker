@@ -3,7 +3,14 @@ class TicketsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
-    @tickets = Ticket.all
+    @tickets = if params[:project_id].present?
+                 Project.find(params[:project_id]).tickets
+               else
+                 Ticket.all
+               end
+    if params[:status].present?
+      @tickets = @tickets.where(status: params[:status])
+    end
   end
   
   def show
@@ -14,7 +21,7 @@ class TicketsController < ApplicationController
   end
   
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.new(ticket_params.merge!(creator: current_user))
     
     if @ticket.save
       redirect_to @ticket
@@ -49,7 +56,6 @@ class TicketsController < ApplicationController
   end
   
   def ticket_params
-    params.require(:ticket)
-          .permit(:name, :body, :status, :open, :project_id, :assignee_id, tag_ids: [])
+    params.require(:ticket).permit(:name, :body, :status, :project_id, :assignee_id, tag_ids: [])
   end
 end

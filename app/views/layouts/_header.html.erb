@@ -12,20 +12,15 @@
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <%= link_to "Projects", projects_path %>
-        </li>
-        <li>
-          <%= link_to "Tickets", tickets_path %>
-        </li>
-        <li>
-          <%= link_to "Tags", tags_path %>
-        </li>
+        <li class="strong"><%= link_to "Ticketing", root_path %></li>
+        <li><%= link_to "Projects", projects_path %></li>
+        <li><%= link_to "Tickets", tickets_path %></li>
+        <li><%= link_to "Tags", tags_path %></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
-         <li><p>Sign in as <%= current_user.name %> |</p></li>
+         <li><p>Sign in as <%= current_user.name %></p></li>
          <li><%= link_to "Sign Out", '/sign_out' %></li>
         <% else %>
           <li><%= link_to 'Sign In', sign_in_path %></li> 
