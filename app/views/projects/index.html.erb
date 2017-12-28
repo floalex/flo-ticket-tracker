@@ -4,20 +4,21 @@
   <thead>
    <tr>
      <th scope="row">Name</th>
-     <th>Description</th>
-     <th colspan="3"></th>
+     <th>Open Tickets</th>
+     <th>Total Tickets</th>
    </tr>
  </thead>
  
  <tbody>
    <% @projects.each do |project| %>
     <tr>
-      <td><%= link_to project.name, project %></td>
-      <td><%= project.description %></td>
-      <td class="shrink">
-        <%= link_to 'Edit', edit_project_path(project) %>
-        <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td>
+        <strong><%= link_to project.name, project %></strong>
+        <br>
+        <%= project.description %>
       </td>
+      <td><%= project.tickets.open.count %></td>
+      <td><%= project.tickets.count %></td>
      </tr>
    <% end %>
  </tbody>
