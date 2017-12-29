@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
-    @tags = Tag.alphabetical
+    @tags = Tag.with_counts.alphabetical
   end
   
   def new
