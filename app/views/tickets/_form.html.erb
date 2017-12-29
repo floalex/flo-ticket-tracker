@@ -8,7 +8,7 @@
       <%= f.text_area :body %>
       <%= f.select :status, options_for_ticket_status %>
       <%= f.collection_select :assignee_id, User.all, :id, :name, include_blank: "No one" %>
-      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, inline: true, label_class: "checkbox", label: "Tags" do |cb| %>
+      <%= f.collection_check_boxes :tag_ids, Tag.alphabetical, :id, :name, inline: true, label_class: "checkbox", label: "Tags" do |cb| %>
         <% cb.label { cb.check_box + cb.text } %>
       <% end %>
       <%= f.form_group do %>

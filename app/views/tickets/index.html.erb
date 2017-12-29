@@ -8,7 +8,7 @@
       with status
       <%= select_tag :status, options_for_ticket_status(params[:status]), include_blank: "Any Status" %>
       tagged
-      <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), include_blank: "-" %>
+      <%= select_tag :tag_id, options_from_collection_for_select(Tag.alphabetical, :id, :name, params[:tag_id]), include_blank: "-" %>
       <%= button_tag "Update", class:"btn btn-primary" %>
       <span>
         <%= link_to "Clear Filters", tickets_path %>
