@@ -8,15 +8,7 @@ class TicketsController < ApplicationController
                else
                  Ticket.all
                end
-    if params[:status].present?
-      @tickets = @tickets.where(status: params[:status])
-    end
-    if params[:tag_id].present?
-      @tickets = @tickets.joins(:tags).where("tags.id" => params[:tag_id])
-    end
-    if params[:search_term].present?
-      @tickets = Ticket.search_by_name_or_description(params[:search_term])
-    end
+    with_status_tag_search
   end
   
   def show
@@ -64,5 +56,17 @@ class TicketsController < ApplicationController
   
   def ticket_params
     params.require(:ticket).permit(:name, :body, :status, :project_id, :assignee_id, tag_ids: [])
+  end
+  
+  def with_status_tag_search
+    if params[:search_term].present?
+      @tickets = Ticket.search_by_name_or_description(params[:search_term])
+    end
+    if params[:status].present?
+      @tickets = @tickets.where(status: params[:status])
+    end
+    if params[:tag_id].present?
+      @tickets = @tickets.joins(:tags).where("tags.id" => params[:tag_id])
+    end
   end
 end

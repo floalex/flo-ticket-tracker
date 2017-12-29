@@ -1,17 +1,17 @@
-.ticket-filters, .ticket-searches {
+.ticket-filters {
   select {
    display: inline;
+  }
+  #search_term {
+    width: 260px;
+    padding: 3px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
   }
   button {
    padding: .4em .7em;
    font-size: 12px;
   }
 }
-
-.ticket-searches {
-  input[type="text"] {
-    min-width: 260px;
-    width: auto;
-    border-radius: 2px;
-  }
-} 

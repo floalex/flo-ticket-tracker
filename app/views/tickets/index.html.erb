@@ -9,22 +9,10 @@
       <%= select_tag :status, options_for_ticket_status(params[:status]), include_blank: "Any Status" %>
       tagged
       <%= select_tag :tag_id, options_from_collection_for_select(Tag.alphabetical, :id, :name, params[:tag_id]), include_blank: "-" %>
+      <br>
+      with search
+      <%= text_field_tag :search_term, '', placeholder: 'Search by title or description here' %>
       <%= button_tag "Update", class:"btn btn-primary" %>
-      <span>
-        <%= link_to "Clear Filters", tickets_path %>
-      </span>
-    </p>
-  <% end %>
-</div>
-
-<br>
-
-<div class="ticket-searches">
-  <%= form_tag tickets_path, method: :get do %>
-    <p>
-      Search Tickets by Title or Description
-      <%= text_field_tag :search_term, '', placeholder: 'Search for tickets here' %>
-      <%= button_tag 'Search', class: 'btn btn-primary' %>
       <span>
         <%= link_to "Clear Filters", tickets_path %>
       </span>
