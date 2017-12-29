@@ -17,7 +17,16 @@
   <% end %>
 </div>
 
-<%= render "tickets/list", tickets: @tickets %>
+<br>
+
+<% if @tickets.empty? %>
+  <p class="empty-list">
+    There are no tickets matching the selected filters.
+    <%= link_to "Clear filters and show all tickets", tickets_path %>
+  <p>
+<% else %>
+  <%= render "tickets/list", tickets: @tickets %>
+<% end %>
 
 <br>
 
