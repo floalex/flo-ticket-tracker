@@ -3,11 +3,8 @@ class TicketsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
-    @tickets = if params[:project_id].present?
-                 Project.find(params[:project_id]).tickets
-               else
-                 Ticket.all
-               end
+    @tickets = Ticket.all
+
     with_status_tag_search
   end
   
@@ -59,8 +56,11 @@ class TicketsController < ApplicationController
   end
   
   def with_status_tag_search
+    if params[:project_id].present?
+      @tickets = Project.find(params[:project_id]).tickets
+    end
     if params[:search_term].present?
-      @tickets = Ticket.search_by_name_or_description(params[:search_term])
+      @tickets = @tickets.search_by_name_or_description(params[:search_term])
     end
     if params[:status].present?
       @tickets = @tickets.where(status: params[:status])
