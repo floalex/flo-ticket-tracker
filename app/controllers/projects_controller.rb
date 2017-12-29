@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
-    @projects = Project.all
+    # display the Projects index to avoid any N+1 queries
+    @projects = Project.includes(:tickets)
   end
   
   def show
