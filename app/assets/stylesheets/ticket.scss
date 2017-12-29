@@ -1,0 +1,17 @@
+.ticket-filters, .ticket-searches {
+  select {
+   display: inline;
+  }
+  button {
+   padding: .4em .7em;
+   font-size: 12px;
+  }
+}
+
+.ticket-searches {
+  input[type="text"] {
+    min-width: 260px;
+    width: auto;
+    border-radius: 2px;
+  }
+} 

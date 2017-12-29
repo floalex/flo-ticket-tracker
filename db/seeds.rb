@@ -20,7 +20,7 @@ project = Project.create!(name: "Danyang–Kunshan Grand Bridge",
 
 ticket1 = project.tickets.create(name: "Shaky section 6 miles from North end.",
                                  body: "Reported by a rail passenger.",
-                                 creator: user_2,
+                                 creator: user2,
                                  tags: [rail_tag, critical_tag],
                                  assignee: user)
 
@@ -28,7 +28,7 @@ ticket1.comments.create!(body: "This seems serious.", creator: user)
 
 ticket2 = project.tickets.create(name: "Trains late getting to Wuxi East",
                                  body: "Train was at least 5 minutes late today",
-                                 creator: user_2,
+                                 creator: user2,
                                  tags: [rail_tag, out_of_scope_tag],
                                  status: "fixed")
 
@@ -36,7 +36,7 @@ ticket2.comments.create!(body: "This is not a problem with the bridge", creator:
 
 ticket3 = project.tickets.create(name: "Track is not connected in the middle",
                                  body: "This is preventing the entire system from working.",
-                                 creator: user_2,
+                                 creator: user2,
                                  tags: [rail_tag, needs_info_tag, cnr_tag],
                                  status: "blocked")
 

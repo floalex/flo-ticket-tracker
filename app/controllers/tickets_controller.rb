@@ -14,6 +14,9 @@ class TicketsController < ApplicationController
     if params[:tag_id].present?
       @tickets = @tickets.joins(:tags).where("tags.id" => params[:tag_id])
     end
+    if params[:search_term].present?
+      @tickets = Ticket.search_by_name_or_description(params[:search_term])
+    end
   end
   
   def show

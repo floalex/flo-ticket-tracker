@@ -19,6 +19,21 @@
 
 <br>
 
+<div class="ticket-searches">
+  <%= form_tag tickets_path, method: :get do %>
+    <p>
+      Search Tickets by Title or Description
+      <%= text_field_tag :search_term, '', placeholder: 'Search for tickets here' %>
+      <%= button_tag 'Search', class: 'btn btn-primary' %>
+      <span>
+        <%= link_to "Clear Filters", tickets_path %>
+      </span>
+    </p>
+  <% end %>
+</div>
+
+<br>
+
 <% if @tickets.empty? %>
   <p class="empty-list">
     There are no tickets matching the selected filters.
