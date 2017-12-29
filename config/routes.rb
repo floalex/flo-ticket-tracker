@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   
   resources :tags, only: [:index, :new, :edit, :create, :update, :destroy]
   
-  resources :users, only: [:create] 
+  resources :users, only: [:index, :create] 
 end

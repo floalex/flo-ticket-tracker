@@ -1,4 +1,11 @@
 class UsersController < ApplicationController  
+  before_action :require_user, only: [:index]
+  
+  def index
+    @users = User.all
+    @tickets = Ticket.all
+  end
+  
   def new
     @user = User.new
   end

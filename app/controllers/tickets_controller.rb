@@ -4,7 +4,6 @@ class TicketsController < ApplicationController
   
   def index
     @tickets = Ticket.all
-
     with_status_tag_search
   end
   

@@ -6,38 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.find_or_create_by(name: "Bob", email: "bob@example.com") {|user| user.password = "password"}
+# Remember to update id
+# SELECT setval('videos_id_seq', (SELECT MAX(id) from "videos")); in psql
+user = User.find_or_create_by(name: "John", email: "john@example.com") {|user| user.password = "password"}
+puts user.id
 user2 = User.find_or_create_by(name: "Joe", email: "joe@example.com") {|user| user.password = "password"}
+puts user2.id
 
-rail_tag = Tag.create!(name: "Rail")
-critical_tag = Tag.create!(name: "Critical")
-cnr_tag = Tag.create!(name: "Could Not Reproduce")
-needs_info_tag = Tag.create!(name: "Needs Info")
-out_of_scope_tag = Tag.create!(name: "Out of Scope")
+rail_tag = Tag.find_or_create_by!(name: "Rail")
+critical_tag = Tag.find_or_create_by!(name: "Critical")
+cnr_tag = Tag.find_or_create_by!(name: "Could Not Reproduce")
+needs_info_tag = Tag.find_or_create_by!(name: "Needs Info")
+out_of_scope_tag = Tag.find_or_create_by!(name: "Out of Scope")
 
-project = Project.create!(name: "Danyang–Kunshan Grand Bridge",
+project = Project.find_or_create_by!(name: "Danyang–Kunshan Grand Bridge",
                           description: "The Danyang–Kunshan Grand Bridge is the world's longest bridge.[2] It is a 164.8-kilometre (102.4 mi) long viaduct on the Beijing–Shanghai High-Speed Railway.")
 
-ticket1 = project.tickets.create(name: "Shaky section 6 miles from North end.",
+ticket1 = project.tickets.find_or_create_by!(name: "Shaky section 6 miles from North end.",
                                  body: "Reported by a rail passenger.",
                                  creator: user2,
-                                 tags: [rail_tag, critical_tag],
-                                 assignee: user)
+                                 assignee: user) {|ticket| ticket.tags = [rail_tag, critical_tag] }
 
-ticket1.comments.create!(body: "This seems serious.", creator: user)
+ticket1.comments.find_or_create_by!(body: "This seems serious.", creator: user)
 
-ticket2 = project.tickets.create(name: "Trains late getting to Wuxi East",
+ticket2 = project.tickets.find_or_create_by!(name: "Trains late getting to Wuxi East",
                                  body: "Train was at least 5 minutes late today",
                                  creator: user2,
-                                 tags: [rail_tag, out_of_scope_tag],
-                                 status: "fixed")
+                                 status: "fixed") {|ticket| ticket.tags = [rail_tag, out_of_scope_tag] }
 
-ticket2.comments.create!(body: "This is not a problem with the bridge", creator: user)
+ticket2.comments.find_or_create_by!(body: "This is not a problem with the bridge", creator: user)
 
-ticket3 = project.tickets.create(name: "Track is not connected in the middle",
+ticket3 = project.tickets.find_or_create_by!(name: "Track is not connected in the middle",
                                  body: "This is preventing the entire system from working.",
                                  creator: user2,
-                                 tags: [rail_tag, needs_info_tag, cnr_tag],
-                                 status: "blocked")
+                                 status: "blocked") {|ticket| ticket.tags = [rail_tag, needs_info_tag, cnr_tag] }
 
-ticket3.comments.create!(body: "I have been unable to observe this myself.", creator: user)
+ticket3.comments.find_or_create_by!(body: "I have been unable to observe this myself.", creator: user)

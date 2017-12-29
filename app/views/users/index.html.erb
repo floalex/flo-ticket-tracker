@@ -1,0 +1,30 @@
+<h1>Users Stats</h1>
+
+<% if @users.empty? %>
+  <p class="empty-list">
+    There are no users!
+  </p>
+  
+<% else %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>User Total Ticket Number</th>
+        <th>User Open Ticket</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.tickets.size %></td>
+          <td><%= user.tickets.open.size %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% end %>
